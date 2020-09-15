@@ -6,31 +6,35 @@ const int VEC_SIZE = 200,
           HIGH = 10000,
           SEED = 1;
 
-// Add code for genRndNums
+// Generates and adds the random numbers to our vector
 void genRndNums(vector<int> &v) {
     srand(SEED);
     for(int i = 0; i < VEC_SIZE; i++) {
-        v.at(i) = rand()%HIGH+LOW;
+        v[i] = rand()%((HIGH-LOW)+1)+LOW;
     }
 }
 
-// Add code for printVec
+// Prints all the items in our vector with a set width and 
+// output design
 void printVec(const vector<int> &v) {
-    for(int i = 0; i < VEC_SIZE; i++) 
-        cout << v.at(i) << "|";
+    const int NO_ITEMS = 12, ITEM_W = 5;
+    int count = 0;
+    for (int i = 0; i < VEC_SIZE; i++) {
+        if (count == NO_ITEMS) {
+            count = 0;
+            cout << endl;
+        }
+        cout << setw(ITEM_W) << v[i] << ' ';
+        count++;
+    }
+    cout << endl;
 }
 
 int main() {
-// Declare vector v
     vector<int> v(VEC_SIZE);
-    
-// Generate random numbers to fill vector v	
     genRndNums(v);
-    
-// Using STL sort sort v
+    // Sorts our vector using STL sort
     sort(v.begin(), v.end());
-    
-// Print vector of sorted random numbers
     printVec(v);
     
     return 1;
