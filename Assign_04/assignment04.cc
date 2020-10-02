@@ -11,7 +11,9 @@
 #include <iostream>
 #include <iomanip>
 #include <map>
+#include <fstream>
 #include <algorithm>
+#include <ctype.h>
 
 using namespace std;
 
@@ -27,18 +29,14 @@ void get_words(map<string, int>& m) {
     //This will need modification because it will take it in, clean it
     //then add it, not add it, clean it, add it, delete it, like you're
     //trying to do.
-    string cleantemp = "";
-    m.insert({"Test" , 1});
-    m.insert({"Test.", 1});
-    m.insert({"Test.", 1});
-    m.insert({"Test/", 1});
-    m.insert({"Test?", 1});
-    m.insert({"Test,", 1});
-    m.insert({"Test!", 1});
-    
-    for (auto it = m.begin(); it != m.end(); ++it) {
-        clean_entry(it->first, cleantemp);
-        m[cleantemp]++;
+    string toClean = "";
+    string cleaned = "";
+    ifstream in;
+    in.open("assignment04.in");
+    while(in) {
+        in >> toClean;
+        clean_entry(toClean, cleaned);
+        m[cleaned]++;
     }
 }
 
@@ -68,6 +66,7 @@ void clean_entry(const string& A, string& B) {
         if (!isalnum(A[i]) && i > firstChar) lastChar = i;
     }
     B = A.substr(firstChar, lastChar-firstChar);
+    for_each(B.begin(), B.end(), tolower)
 }
 
 
