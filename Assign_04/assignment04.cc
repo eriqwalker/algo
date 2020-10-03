@@ -13,7 +13,6 @@
 #include <map>
 #include <fstream>
 #include <algorithm>
-#include <ctype.h>
 
 using namespace std;
 
@@ -21,7 +20,24 @@ using namespace std;
 void get_words(map<string, int>&);
 void print_words(const map<string, int>&);
 void clean_entry(const string&, string&);
+void my_tolower(char &c);
+int  mapcount(const map<string, int>&);
 
+//tolower function
+void my_tolower(char &c) {
+    c = tolower(c);
+}
+
+//counting the number of words total in the map by adding all
+//of the frequencies together
+int mapcount(const map<string, int>& m) {
+    int count = 0;
+    for (auto it = m.begin(); it != m.end(); ++it) {
+        count += it->second;
+    }
+    
+    return count;
+}
 
 //gets a word from the input stream and removes punctuation
 //cleans all the words by calling clean_entry
@@ -50,7 +66,7 @@ void print_words(const map<string, int>& m) {
     
     for (auto it = m.begin(); it != m.end(); ++it) {
         if (count != 0 && count%NO_ITEMS == 0) cout << endl;
-        cout << left << setw(ITEM_W) << it->first << ": " << it->second << "   "; 
+        cout << left << setw(ITEM_W) << it->first << " : " << setw(5) << it->second; 
         count++;
     }
     cout << endl;
@@ -62,11 +78,13 @@ void print_words(const map<string, int>& m) {
 void clean_entry(const string& A, string& B) {
     unsigned firstChar = A.size(), lastChar = A.size();
     for (unsigned i = 0; i < lastChar; i++) {
-        if (isalnum(A[i]) && i < firstChar) firstChar = i;
-        if (!isalnum(A[i]) && i > firstChar) lastChar = i;
+        if ( isalnum(A[i]) && i < firstChar) firstChar = i;
+        if (!isalnum(A[i]) && i > firstChar) lastChar  = i;
     }
-    B = A.substr(firstChar, lastChar-firstChar);
-    for_each(B.begin(), B.end(), tolower)
+    if (!(firstChar == lastChar)) {
+        B = A.substr(firstChar, lastChar-firstChar);
+        for_each(B.begin(), B.end(), my_tolower);
+    }
 }
 
 
@@ -75,5 +93,14 @@ int main() {
     get_words(words);
     print_words(words);
     
+    cout << "\nno of words in input stream  : " << mapcount(words) << endl;
+    cout << "no of words in output stream : " << words.size() << endl;
+    
     return 0;
 }
+
+//word    extra
+//it      2
+//you     1
+//period  1
+//however 1
