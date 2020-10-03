@@ -42,9 +42,6 @@ int mapcount(const map<string, int>& m) {
 //gets a word from the input stream and removes punctuation
 //cleans all the words by calling clean_entry
 void get_words(map<string, int>& m) {
-    //This will need modification because it will take it in, clean it
-    //then add it, not add it, clean it, add it, delete it, like you're
-    //trying to do.
     string toClean = "";
     string cleaned = "";
     ifstream in;
@@ -52,7 +49,8 @@ void get_words(map<string, int>& m) {
     while(in) {
         in >> toClean;
         clean_entry(toClean, cleaned);
-        m[cleaned]++;
+        if (cleaned.length() > 0)
+            m[cleaned]++;
     }
 }
 
@@ -76,15 +74,22 @@ void print_words(const map<string, int>& m) {
 //original word in the stream and the second contains the same
 //word after cleaning
 void clean_entry(const string& A, string& B) {
-    unsigned firstChar = A.size(), lastChar = A.size();
-    for (unsigned i = 0; i < lastChar; i++) {
-        if ( isalnum(A[i]) && i < firstChar) firstChar = i;
-        if (!isalnum(A[i]) && i > firstChar) lastChar  = i;
+    bool read = false;
+    int start = 0, end = 0;
+    for (unsigned i = 0; i < A.size(); i++) {
+        end++;
+        if (isalnum(A[i]) > 0) read = true;
+        if (read) {
+            if (isalnum(A[i]) <= 0) {
+                end--;
+                break;
+            }
+        }
+        else start++;
     }
-    if (!(firstChar == lastChar)) {
-        B = A.substr(firstChar, lastChar-firstChar);
-        for_each(B.begin(), B.end(), my_tolower);
-    }
+    B = A.substr(start, end-start);
+    
+    for_each(B.begin(), B.end(), my_tolower);
 }
 
 
