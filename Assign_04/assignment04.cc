@@ -66,7 +66,7 @@ void print_words(const map<string, int>& m) {
         if (count != 0 && count%NO_ITEMS == 0) cout << endl;
         cout << left << setw(ITEM_W) << it->first << " : " << setw(5) << it->second; 
         count++;
-    }
+    } 
     cout << endl;
 }
 

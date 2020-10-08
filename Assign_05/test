@@ -1,0 +1,32 @@
+ABC 1234 arrives
+XYZ 9999 arrives
+ALICE 1 arrives
+1234567 arrives
+ALICE 1 departs
+GEORGE 5 arrives
+UV 2 arrives
+XC 344 arrives
+ZZZ 1111 arrives
+1234567 departs
+XYZ 9999 departs
+No car with license plate "XYZ 9999" in garage.
+ABC 1234 departs
+No car with license plate "ABC 1234" in garage.
+MARYANN arrives
+FUNNY 33 arrives
+ZZZ 1111 departs
+WHO IS arrives
+J RIPPER arrives
+CEM 1 arrives
+Z123 arrives
+QQ 99 arrives
+XC 344 departs
+No car with license plate "XC 344" in garage.
+1 arrives
+11 arrives
+'X': invalid action!
+MARYANN departs
+UV 2 departs
+No car with license plate "UV 2" in garage.
+XXX 123 departs
+No car with license plate "XXX 123" in garage.
