@@ -1,0 +1,211 @@
+g++ -std=c++11 -Wall -Wextra -pedantic -o bstDriver.exe bstDriver.cc
+In file included from bstDriver.cc:11:0:
+bstDriver.h:24:11: error: expected ‘,’ or ‘...’ before numeric constant
+ #define N 100       // num of rand ints
+           ^
+binarytree.h:56:62: note: in expansion of macro ‘N’
+ template <class T> unsigned BinaryTree<T>::_getSize(Node<T> *N) const {
+                                                              ^
+In file included from binarysearchtree.h:13:0,
+                 from bstDriver.cc:13:
+binarytree.h: In member function ‘unsigned int BinaryTree<T>::_getSize(Node<T>*) const’:
+binarytree.h:57:11: error: invalid operands of types ‘int’ and ‘std::nullptr_t’ to binary ‘operator==’
+     if (N == nullptr) return 0;
+binarytree.h:58:27: error: base operand of ‘->’ is not a pointer
+     else return(_getSize(N->left)+1+_getSize(N->right));
+                           ^~
+binarytree.h:58:47: error: base operand of ‘->’ is not a pointer
+     else return(_getSize(N->left)+1+_getSize(N->right));
+                                               ^~
+In file included from bstDriver.cc:11:0:
+binarytree.h: At global scope:
+bstDriver.h:24:11: error: expected ‘,’ or ‘...’ before numeric constant
+ #define N 100       // num of rand ints
+           ^
+binarytree.h:62:64: note: in expansion of macro ‘N’
+ template <class T> unsigned BinaryTree<T>::_getHeight(Node<T> *N) const {
+                                                                ^
+In file included from binarysearchtree.h:13:0,
+                 from bstDriver.cc:13:
+binarytree.h: In member function ‘unsigned int BinaryTree<T>::_getHeight(Node<T>*) const’:
+binarytree.h:63:11: error: invalid operands of types ‘int’ and ‘std::nullptr_t’ to binary ‘operator==’
+     if (N == nullptr) return 0;
+binarytree.h:65:25: error: base operand of ‘->’ is not a pointer
+     int x = _getHeight(N->left);
+                         ^~
+binarytree.h:66:25: error: base operand of ‘->’ is not a pointer
+     int y = _getHeight(N->right);
+                         ^~
+In file included from bstDriver.cc:11:0:
+binarytree.h: At global scope:
+bstDriver.h:24:11: error: expected ‘,’ or ‘...’ before numeric constant
+ #define N 100       // num of rand ints
+           ^
+binarytree.h:73:58: note: in expansion of macro ‘N’
+ template <class T> void BinaryTree<T>::_Insert(Node<T> *&N, const T& x) {
+                                                          ^
+In file included from binarysearchtree.h:13:0,
+                 from bstDriver.cc:13:
+binarytree.h:73:25: error: prototype for ‘void BinaryTree<T>::_Insert(Node<T>*&)’ does not match any in class ‘BinaryTree<T>’
+ template <class T> void BinaryTree<T>::_Insert(Node<T> *&N, const T& x) {
+                         ^~~~~~~~~~~~~
+binarytree.h:41:14: error: candidate is: void BinaryTree<T>::_Insert(Node<T>*&, const T&)
+     void     _Insert(Node<T> *&, const T&);             // private version of Insert()
+              ^~~~~~~
+In file included from bstDriver.cc:11:0:
+bstDriver.h:24:11: error: expected ‘,’ or ‘...’ before numeric constant
+ #define N 100       // num of rand ints
+           ^
+binarytree.h:83:58: note: in expansion of macro ‘N’
+ template <class T> void BinaryTree<T>::_Inorder(Node<T> *N, void (*order)(const T&)) {
+                                                          ^
+In file included from binarysearchtree.h:13:0,
+                 from bstDriver.cc:13:
+binarytree.h:83:25: error: prototype for ‘void BinaryTree<T>::_Inorder(Node<T>*)’ does not match any in class ‘BinaryTree<T>’
+ template <class T> void BinaryTree<T>::_Inorder(Node<T> *N, void (*order)(const T&)) {
+                         ^~~~~~~~~~~~~
+binarytree.h:42:14: error: candidate is: void BinaryTree<T>::_Inorder(Node<T>*, void (*)(const T&))
+     void     _Inorder(Node<T> *, void (*)(const T&));   // private version of Inorder()
+              ^~~~~~~~
+In file included from bstDriver.cc:13:0:
+binarysearchtree.h:32:19: error: ‘T’ does not name a type
+ void Insert(const T &x)       {        _Insert(root, x); }
+                   ^
+binarysearchtree.h: In function ‘void Insert(const int&)’:
+binarysearchtree.h:32:48: error: ‘root’ was not declared in this scope
+ void Insert(const T &x)       {        _Insert(root, x); }
+                                                ^~~~
+binarysearchtree.h:32:48: note: suggested alternative: ‘bool’
+ void Insert(const T &x)       {        _Insert(root, x); }
+                                                ^~~~
+                                                bool
+binarysearchtree.h:32:40: error: ‘_Insert’ was not declared in this scope
+ void Insert(const T &x)       {        _Insert(root, x); }
+                                        ^~~~~~~
+binarysearchtree.h:32:40: note: suggested alternative: ‘Insert’
+ void Insert(const T &x)       {        _Insert(root, x); }
+                                        ^~~~~~~
+                                        Insert
+binarysearchtree.h: At global scope:
+binarysearchtree.h:33:19: error: ‘T’ does not name a type
+ bool Search(const T &x) const { return _Search(root, x); }
+                   ^
+binarysearchtree.h:33:25: error: non-member function ‘bool Search(const int&)’ cannot have cv-qualifier
+ bool Search(const T &x) const { return _Search(root, x); }
+                         ^~~~~
+binarysearchtree.h: In function ‘bool Search(const int&)’:
+binarysearchtree.h:33:48: error: ‘root’ was not declared in this scope
+ bool Search(const T &x) const { return _Search(root, x); }
+                                                ^~~~
+binarysearchtree.h:33:48: note: suggested alternative: ‘bool’
+ bool Search(const T &x) const { return _Search(root, x); }
+                                                ^~~~
+                                                bool
+binarysearchtree.h:33:40: error: ‘_Search’ was not declared in this scope
+ bool Search(const T &x) const { return _Search(root, x); }
+                                        ^~~~~~~
+binarysearchtree.h:33:40: note: suggested alternative: ‘Search’
+ bool Search(const T &x) const { return _Search(root, x); }
+                                        ^~~~~~~
+                                        Search
+binarysearchtree.h: At global scope:
+binarysearchtree.h:34:19: error: ‘T’ does not name a type
+ bool Remove(const T &x)       { return _Remove(root, x); }
+                   ^
+binarysearchtree.h: In function ‘bool Remove(const int&)’:
+binarysearchtree.h:34:48: error: ‘root’ was not declared in this scope
+ bool Remove(const T &x)       { return _Remove(root, x); }
+                                                ^~~~
+binarysearchtree.h:34:48: note: suggested alternative: ‘bool’
+ bool Remove(const T &x)       { return _Remove(root, x); }
+                                                ^~~~
+                                                bool
+binarysearchtree.h:34:40: error: ‘_Remove’ was not declared in this scope
+ bool Remove(const T &x)       { return _Remove(root, x); }
+                                        ^~~~~~~
+binarysearchtree.h:34:40: note: suggested alternative: ‘Remove’
+ bool Remove(const T &x)       { return _Remove(root, x); }
+                                        ^~~~~~~
+                                        Remove
+binarysearchtree.h: At global scope:
+binarysearchtree.h:37:19: error: ‘T’ was not declared in this scope
+ void _Insert(Node<T> *&node, const T &x) {
+                   ^
+binarysearchtree.h:37:20: error: template argument 1 is invalid
+ void _Insert(Node<T> *&node, const T &x) {
+                    ^
+binarysearchtree.h:37:36: error: ‘T’ does not name a type
+ void _Insert(Node<T> *&node, const T &x) {
+                                    ^
+binarysearchtree.h: In function ‘void _Insert(int*&, const int&)’:
+binarysearchtree.h:38:42: error: ‘T’ was not declared in this scope
+     if (node == nullptr) node = new Node<T>(x);
+                                          ^
+binarysearchtree.h:38:43: error: template argument 1 is invalid
+     if (node == nullptr) node = new Node<T>(x);
+                                           ^
+binarysearchtree.h:41:43: error: request for member ‘left’ in ‘* node’, which is of non-class type ‘int’
+         if (s == left_side) _Insert(node->left, x);
+                                           ^~~~
+binarysearchtree.h:42:28: error: request for member ‘right’ in ‘* node’, which is of non-class type ‘int’
+         else _Insert(node->right, x);
+                            ^~~~~
+binarysearchtree.h: At global scope:
+binarysearchtree.h:46:19: error: ‘T’ was not declared in this scope
+ bool _Search(Node<T> *node, const T &x) const {
+                   ^
+binarysearchtree.h:46:20: error: template argument 1 is invalid
+ bool _Search(Node<T> *node, const T &x) const {
+                    ^
+binarysearchtree.h:46:35: error: ‘T’ does not name a type
+ bool _Search(Node<T> *node, const T &x) const {
+                                   ^
+binarysearchtree.h:46:41: error: non-member function ‘bool _Search(int*, const int&)’ cannot have cv-qualifier
+ bool _Search(Node<T> *node, const T &x) const {
+                                         ^~~~~
+binarysearchtree.h: In function ‘bool _Search(int*, const int&)’:
+binarysearchtree.h:48:19: error: request for member ‘data’ in ‘* node’, which is of non-class type ‘int’
+     if (x > node->data)  return _Search(node->right, x);
+                   ^~~~
+binarysearchtree.h:48:47: error: request for member ‘right’ in ‘* node’, which is of non-class type ‘int’
+     if (x > node->data)  return _Search(node->right, x);
+                                               ^~~~~
+binarysearchtree.h:49:19: error: request for member ‘data’ in ‘* node’, which is of non-class type ‘int’
+     if (x < node->data)  return _Search(node->left , x);
+                   ^~~~
+binarysearchtree.h:49:47: error: request for member ‘left’ in ‘* node’, which is of non-class type ‘int’
+     if (x < node->data)  return _Search(node->left , x);
+                                               ^~~~
+binarysearchtree.h: At global scope:
+binarysearchtree.h:53:19: error: ‘T’ was not declared in this scope
+ void _Remove(Node<T> *&node, const T &x) {
+                   ^
+binarysearchtree.h:53:20: error: template argument 1 is invalid
+ void _Remove(Node<T> *&node, const T &x) {
+                    ^
+binarysearchtree.h:53:36: error: ‘T’ does not name a type
+ void _Remove(Node<T> *&node, const T &x) {
+                                    ^
+binarysearchtree.h: In function ‘void _Remove(int*&, const int&)’:
+binarysearchtree.h:55:13: error: ‘_Leaf’ was not declared in this scope
+         if (_Leaf(node)) {
+             ^~~~~
+binarysearchtree.h: At global scope:
+binarysearchtree.h:61:17: error: ‘T’ was not declared in this scope
+ bool _Leaf(Node<T> *node) const {
+                 ^
+binarysearchtree.h:61:18: error: template argument 1 is invalid
+ bool _Leaf(Node<T> *node) const {
+                  ^
+binarysearchtree.h:61:27: error: non-member function ‘bool _Leaf(int*)’ cannot have cv-qualifier
+ bool _Leaf(Node<T> *node) const {
+                           ^~~~~
+binarysearchtree.h: In function ‘bool _Leaf(int*)’:
+binarysearchtree.h:62:15: error: request for member ‘right’ in ‘* node’, which is of non-class type ‘int’
+     if (node->right == nullptr
+               ^~~~~
+binarysearchtree.h:63:15: error: request for member ‘left’ in ‘* node’, which is of non-class type ‘int’
+      && node->left  == nullptr) return true;
+               ^~~~
+makefile:2: recipe for target 'bstDriver.exe' failed
+make: *** [bstDriver.exe] Error 1

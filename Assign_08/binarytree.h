@@ -47,44 +47,44 @@ private:
 template <class T>          BinaryTree<T>::BinaryTree()        { root = nullptr;          }
 template <class T> unsigned BinaryTree<T>::getSize() const     { return _getSize(root);   }
 template <class T> unsigned BinaryTree<T>::getHeight() const   { return _getHeight(root); }
-template <class T> void     BinaryTree<T>::Insert(const T& x)  { return _Insert(root, x); }
-template <class T> void     BinaryTree<T>::Inorder(void(*x)(const T&)) { _Inorder(root, x); }
+template <class T> void     BinaryTree<T>::Insert(const T& j)  { return _Insert(root, j); }
+template <class T> void     BinaryTree<T>::Inorder(void(*k)(const T&)) { _Inorder(root, k); }
 
 //Private functions
 
 //gets the size of the tree, and if the tree is empty it returns 0
-template <class T> unsigned BinaryTree<T>::_getSize(Node<T> *N) const {
-    if (N == nullptr) return 0;
-    else return(_getSize(N->left)+1+_getSize(N->right));
+template <class T> unsigned BinaryTree<T>::_getSize(Node<T> *node) const {
+    if (node == nullptr) return 0;
+    else return(_getSize(node->left)+1+_getSize(node->right));
 }
 
 //gets the height of the tree, and if the tree is empty it returns 0
-template <class T> unsigned BinaryTree<T>::_getHeight(Node<T> *N) const {
-    if (N == nullptr) return 0;
+template <class T> unsigned BinaryTree<T>::_getHeight(Node<T> *node) const {
+    if (node == nullptr) return 0;
     
-    int x = _getHeight(N->left);
-    int y = _getHeight(N->right);
+    int x = _getHeight(node->left);
+    int y = _getHeight(node->right);
     
     if (x > y) return (x+1);
     return (y+1);
 }
 
 //insrts a node, if the tree is empty ir creates a new node as the root
-template <class T> void BinaryTree<T>::_Insert(Node<T> *&N, const T& x) {
-    if (N == nullptr) N = new Node<T>(j);
+template <class T> void BinaryTree<T>::_Insert(Node<T> *&node, const T& x) {
+    if (node == nullptr) node = new Node<T>(x);
     else {
         SIDE s = rnd();
-        if (s == left_side) _Insert(N->left, j);
-        else _Insert(N->right, j);
+        if (s == left_side) _Insert(node->left, x);
+        else _Insert(node->right, x);
     }
 }
 
 //inorder traversing the tree, if tree is empty it returns right away
-template <class T> void BinaryTree<T>::_Inorder(Node<T> *N, void (*order)(const T&)) {
-    if (N == nullptr) return;
-    _Inorder(N->left, order);
-    order(N->data);
-    _Inorder(N->right, order);
+template <class T> void BinaryTree<T>::_Inorder(Node<T> *node, void (*order)(const T&)) {
+    if (node == nullptr) return;
+    _Inorder(node->left, order);
+    order(node->data);
+    _Inorder(node->right, order);
 }
 
 #endif // End of H_BINARYTREE
