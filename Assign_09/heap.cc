@@ -1,13 +1,35 @@
+/*
+ * Eriq Walker
+ * z1908120
+ * CSCI-340-2
+ * 
+ * I certify that this is my own work and where appropriate an extension
+ *  of the starter code provided for the assignment.
+ * 
+ * */
+ 
 #include "heap.h"
 
 template <typename T>
 void get_list(vector<T> &v, const char *path) {
-  // Your implementation goes here!!!
+    v.clear();
+    ifstream is;
+    is.open(path);
+    if (!is) {
+         cerr << "ERROR: '" << path << "'failed to open.\n";
+         return;
+    }
+    T temp;
+    while(is >> temp) {
+        v.push_back(temp);
+    }
+    is.close();
 }
 
 template <typename T, typename P>
 void construct_heap(vector<T> &v, P pred) {
-  // Your implementation goes here!!!
+  make_heap(v.begin(), v.end(), pred);
+  sort_heap(v.begin(), v.end(), pred);
 }
 
 int main() {

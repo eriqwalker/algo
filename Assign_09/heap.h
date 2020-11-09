@@ -48,4 +48,24 @@ class print_list {
   void operator()(const T&);
 };
 
+template<typename T> print_list<T>::print_list(const unsigned &s, const unsigned &w, 
+                                               const unsigned &l, const unsigned &c) {
+    
+    sz  = s;
+    wid = w;
+    len = l;
+    cnt = c;
+}
+
+template<typename T> void print_list<T>::operator()(const T& x) {
+    cout.width(wid);
+    cout.precision(2);
+    cout << fixed << showpoint;
+    cout << x << " ";
+    cnt++;
+    if (cnt%len == 0 && cnt != sz) cout << endl;
+    if (cnt == sz) cout << endl << endl;
+}
+
+
 #endif  // HEAP_H_
