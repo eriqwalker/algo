@@ -48,6 +48,7 @@ class print_list {
   void operator()(const T&);
 };
 
+//constructor
 template<typename T> print_list<T>::print_list(const unsigned &s, const unsigned &w, 
                                                const unsigned &l, const unsigned &c) {
     
@@ -57,7 +58,9 @@ template<typename T> print_list<T>::print_list(const unsigned &s, const unsigned
     cnt = c;
 }
 
+//prints the heap
 template<typename T> void print_list<T>::operator()(const T& x) {
+    //formatting
     cout.width(wid);
     cout.precision(2);
     cout << fixed << showpoint;

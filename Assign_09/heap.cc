@@ -10,22 +10,29 @@
  
 #include "heap.h"
 
+//gets the list from the doc and enters the values into a vector
 template <typename T>
 void get_list(vector<T> &v, const char *path) {
+    //cleans the vector for reuse
     v.clear();
+    //opening the file
     ifstream is;
     is.open(path);
+    //if opening fails print an error
     if (!is) {
          cerr << "ERROR: '" << path << "'failed to open.\n";
          return;
     }
+    //entering the vals into the vector
     T temp;
     while(is >> temp) {
         v.push_back(temp);
     }
+    //closing the file
     is.close();
 }
 
+//makes and sorts the heap
 template <typename T, typename P>
 void construct_heap(vector<T> &v, P pred) {
   make_heap(v.begin(), v.end(), pred);
