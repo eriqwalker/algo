@@ -27,8 +27,8 @@ HT::HT(const unsigned &hs) {
 }
 
 HT::~HT() {
-    for (unsigned i = 0; i < hTable.size(); i++) hTable[i].pop_back();
-    for (unsigned i = 0; i < pTable.size(); i++) delete pTable[i];
+    hTable.clear();
+    pTable.clear();
 }
 
 void HT::insert(const Entry &e) {
@@ -43,7 +43,7 @@ void HT::insert(const Entry &e) {
     
     if (succ != l.cend()) cout << " not inserted - duplicate key!!!\n";
     else {
-        cout << " entry = " << pos << endl;
+        cout << " entry = " << setw(2) << right << pos << endl;
         hTable[pos].push_front(e);
         pTable.push_back(&hTable[pos].front());
     }
@@ -59,29 +59,31 @@ void HT::search(const string &s) {
                         }
     );
     
-    if (succ != l.cend()) cout << "==> number: " << setw(4) << right << succ->num << " -item: " << succ->desc << endl;
-    else cout << " not in the table!!\n";
+    if (succ != l.cend()) cout << " ==> number: " << setw(4) << right << succ->num << " - item: " << succ->desc << endl;
+    else cout << " not in table!!\n";
 }
 
 void HT::hTable_print() {
     int c = 0;
+    bool first = true;
     for (unsigned i = 0; i < hTable.size(); i++) {
         c++;
         if (hTable[i].empty()) {
             c++;
             if (c-i == 1) cout << endl;
+            if (first) cout << endl;
         } else {
             c++;
             if (!hTable[i].empty()) {
                 c = i;
                 for (auto it = hTable[i].begin(); it != hTable[i].end(); it++) {
-                    cout << endl;
-                    cout << setw(4) << i << ": " << it->key << "  -  " << it->num << "  -  " << it->desc;
+                    cout << setw(4) << i << ":  " << it->key << "  -  " 
+                         << setw(4) << right << it->num << "  -  " << it->desc << endl;
                 }
             }
         }
+        first = false;
     }
-    cout << endl;
 }
 
 bool test(Entry *a, Entry *b) {
@@ -92,7 +94,7 @@ void HT::pTable_print() {
     sort(pTable.begin(), pTable.end(), test);
     
     for (unsigned i = 0; i < pTable.size(); i++) {
-        cout << setw(4) << "  " << pTable[i]->key << "  -  " << setw(5) << pTable[i]->num << "  -  " << pTable[i]->desc << endl;
+        cout << "  " << setw(4) << pTable[i]->key << "  - " << setw(5) << pTable[i]->num << "  -  " << pTable[i]->desc << endl;
     }
 }
 
