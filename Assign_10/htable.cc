@@ -21,16 +21,19 @@ int HT::hash(const string &s) {
 }
 
 // You will complete the code below ...
+//constructor
 HT::HT(const unsigned &hs) {
     hTable.resize(hs);
     hsize = hs;
 }
 
+//destructor
 HT::~HT() {
     hTable.clear();
     pTable.clear();
 }
 
+//inserts a new entry if it doesn't already exist
 void HT::insert(const Entry &e) {
     int pos = hash(e.key);
     list<Entry> &l = hTable[pos];
@@ -49,6 +52,7 @@ void HT::insert(const Entry &e) {
     }
 }
 
+//searches for an item, if key doesn't exist then it says it's not in the table
 void HT::search(const string &s) {
     int pos = hash(s);
     list<Entry> &l = hTable[pos];
@@ -63,6 +67,7 @@ void HT::search(const string &s) {
     else cout << " not in table!!\n";
 }
 
+//printing out the entries
 void HT::hTable_print() {
     int c = 0;
     bool first = true;
@@ -86,10 +91,12 @@ void HT::hTable_print() {
     }
 }
 
+//helper function
 bool test(Entry *a, Entry *b) {
     return(a->key.compare(b->key) < 0);
 }
 
+//sorts and then prints the ptable
 void HT::pTable_print() {
     sort(pTable.begin(), pTable.end(), test);
     
